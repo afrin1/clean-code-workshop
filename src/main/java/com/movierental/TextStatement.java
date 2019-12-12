@@ -1,7 +1,7 @@
 package com.movierental;
 
 class TextStatement {
-  public String display(String name, Rentals rentals) {
+  String display(String name, Rentals rentals) {
     String result = "Rental Record for " + name + "\n";
     for (Rental rental : rentals) {
       //show figures for this rental
