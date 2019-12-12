@@ -20,21 +20,10 @@ public class Customer {
   }
 
   public String statement() {
-    String result = "Rental Record for " + getName() + "\n";
-    for (Rental rental : rentals) {
-      //show figures for this rental
-      result += "\t" + rental.getMovie().getTitle() + "\t" +
-          String.valueOf(rental.amount()) + "\n";
-    }
-
-    //add footer lines result
-    result += "Amount owed is " + String.valueOf(totalAmount()) + "\n";
-    result += "You earned " + String.valueOf(frequentRenterPoints())
-        + " frequent renter points";
-    return result;
+    return new TextStatement().display();
   }
 
-  private int frequentRenterPoints() {
+  private int totalFrequentRenterPoints() {
     return rentals.stream().mapToInt(rental -> rental.frequentRenterPoints()).sum();
   }
 
@@ -51,9 +40,26 @@ public class Customer {
 
     //add footer lines result
     result += "Amount owed is <b>" + String.valueOf(totalAmount()) + "</b><br/>";
-    result += "You earned <b>" + String.valueOf(frequentRenterPoints())
+    result += "You earned <b>" + String.valueOf(totalFrequentRenterPoints())
             + "</b> frequent renter points";
     return result;
+  }
+
+  private class TextStatement {
+    public String display() {
+      String result = "Rental Record for " + getName() + "\n";
+      for (Rental rental : rentals) {
+        //show figures for this rental
+        result += "\t" + rental.getMovie().getTitle() + "\t" +
+            String.valueOf(rental.amount()) + "\n";
+      }
+
+      //add footer lines result
+      result += "Amount owed is " + String.valueOf(totalAmount()) + "\n";
+      result += "You earned " + String.valueOf(totalFrequentRenterPoints())
+          + " frequent renter points";
+      return result;
+    }
   }
 }
 
