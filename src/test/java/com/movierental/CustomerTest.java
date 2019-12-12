@@ -18,12 +18,12 @@ public class CustomerTest {
 
     @Test
     public void testStatement() {
-        String expectedResult = "Rental Record for " + customer.getName() + "\n"
-                +"\t" + "Okja" + "\t" + String.valueOf(1.5) + "\n"
-                +"\t" + "Thor" + "\t" + String.valueOf(6.5) + "\n"
-                +"\t" + "Avenger" + "\t" + String.valueOf(18.0) + "\n"
-        +"Amount owed is " + String.valueOf(26.0) + "\n"
-        +"You earned " + String.valueOf(4) + " frequent renter points";
+        String expectedResult = "Rental Record for Alice\n" +
+                "\tOkja\t1.5\n" +
+                "\tThor\t6.5\n" +
+                "\tAvenger\t18.0\n" +
+                "Amount owed is 26.0\n" +
+                "You earned 4 frequent renter points"; // copied from <Click to see difference> by having empty expected String in assert
 
         assertEquals(expectedResult, customer.statement());
     }
