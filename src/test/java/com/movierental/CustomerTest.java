@@ -17,7 +17,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void testStatement() {
+    public void shouldGenerateATextStatement() {
         String expectedResult = "Rental Record for Alice\n" +
                 "\tOkja\t1.5\n" +
                 "\tThor\t6.5\n" +
@@ -26,6 +26,18 @@ public class CustomerTest {
                 "You earned 4 frequent renter points"; // copied from <Click to see difference> by having empty expected String in assert
 
         assertEquals(expectedResult, customer.statement());
+    }
+
+    @Test
+    public void shouldGenerateAHtmlStatement() {
+        String expectedResult = "<h1>Rental Record for <b>Alice</b></h1><br/>" +
+                "Okja 1.5<br/>" +
+                "Thor 6.5<br/>" +
+                "Avenger 18.0<br/>" +
+                "Amount owed is <b>26.0</b><br/>" +
+                "You earned <b>4</b> frequent renter points"; // copied from <Click to see difference> by having empty expected String in assert
+
+        assertEquals(expectedResult, customer.htmlStatement());
     }
 
 }
